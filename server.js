@@ -16,7 +16,8 @@ app.use(express.static('public'));
     const randomQuote = getRandomElement(quotes);
     // Send the random quote as JSON response
     if(randomQuote){
-        res.send(randomQuote);
+        console.log(`i am here ${randomQuote}`);
+        res.send({quote: randomQuote});
     }else{
         res.status(404).send();
     }
@@ -28,11 +29,13 @@ app.use(express.static('public'));
 
     if(person){
         const quoteByPerson = quotes.filter(quote => quote.person === person);
+        console.log({quotes: quoteByPerson});
         res.send({quotes: quoteByPerson});
     }else{
-        res.send(quotes);
+        res.send({quotes: quotes});
     } 
   });  
+
 
 app.post('/api/quotes', (req, res, next) => {
     const {person, quote } = req.query;

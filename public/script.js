@@ -41,6 +41,8 @@ fetchAllButton.addEventListener('click', () => {
     }
   })
   .then(response => {
+    console.log('Response received:', response); 
+    console.log('Quote received:', response.quotes); 
     renderQuotes(response.quotes);
   });
 });
@@ -48,6 +50,7 @@ fetchAllButton.addEventListener('click', () => {
 fetchRandomButton.addEventListener('click', () => {
   fetch('/api/quotes/random')
   .then(response => {
+    console.log('Response received:', response); 
     if (response.ok) {
       return response.json();
     } else {
@@ -64,6 +67,7 @@ fetchByAuthorButton.addEventListener('click', () => {
   fetch(`/api/quotes?person=${author}`)
   .then(response => {
     if (response.ok) {
+      console.log('Response received:', response); 
       return response.json();
     } else {
       renderError(response);
