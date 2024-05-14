@@ -16,7 +16,6 @@ app.use(express.static('public'));
     const randomQuote = getRandomElement(quotes);
     // Send the random quote as JSON response
     if(randomQuote){
-        console.log(`i am here ${randomQuote}`);
         res.send({quote: randomQuote});
     }else{
         res.status(404).send();
